@@ -17,28 +17,12 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .models import Register
 from .serializer import Register_serializer
-from .models import Search_data
-from .serializer import Search_serializer
-from .models import Students
-from .serializer import Student_serializer
 from .models import Task
 from .serializer import Task_serializer
 
 class Register_view(generics.ListCreateAPIView):
     queryset=Register.objects.all()
     serializer_class=Register_serializer
-
-class Search_view(generics.ListCreateAPIView):
-    queryset=Search_data.objects.all()
-    serializer_class=Search_serializer
-    filter_backends=[filters.SearchFilter]
-    search_fields=['Name','About']
-class Studentlist(generics.ListCreateAPIView):
-    queryset=Students.objects.all()
-    serializer_class=Student_serializer
-class Studentdetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset=Students.objects.all()
-    serializer_class=Student_serializer
 
 class Task_listview(generics.ListCreateAPIView):
     queryset=Task.objects.all()
